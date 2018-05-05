@@ -51,6 +51,17 @@ class Usuario{
 		}
 	}
 
+	public function delete(){
+		$sql = new Sql();
+		$sql->query("DELETE FROM tb_usuarios WHERE idusuario = :ID", array(
+			':ID'=>$this->getIdusuario()
+		));
+		$this->setIdusuario(0);
+		$this->setDeslogin("");
+		$this->setDessenha("");
+		$this->setDtcadastro(new DateTime());
+	}
+
 	public function login($login, $password){
 		$sql = new Sql();
 		
@@ -58,11 +69,11 @@ class Usuario{
 			":LOGIN"=>$login,
 			":PASSWORD"=>$password
 		));
+	
 
 		if (isset($result[0])){
-
 			$row = $result[0];
-			$this->setData($results[0]);
+			$this->setData($result[0]);
 
 	}	else {
 		throw new Exception("Login ou senha inválidos");
