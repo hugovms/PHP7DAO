@@ -18,11 +18,15 @@ require_once("config.php");
 //$usuario->login("leklek","445566");
 //echo $usuario;
 
-//
-$aluno = new Usuario("aluno", "4l0n4");
+//Inserir usuarios
+//$aluno = new Usuario("aluno", "4l0n4");
+//$aluno->insert();
+//echo $aluno;
 
-$aluno->insert();
+$usuario = new Usuario();
+$usuario->loadById(8);
+$usuario->update("professor","root");
 
-echo $aluno;
+echo $usuario;
 
 ?>

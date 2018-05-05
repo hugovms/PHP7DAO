@@ -46,7 +46,7 @@ class Usuario{
 		if (isset($result[0])){
 
 			$row = $result[0];
-			$this->setData($results[0]);
+			$this->setData($result[0]);
 
 		}
 	}
@@ -108,8 +108,7 @@ class Usuario{
 		$this->setDeslogin($login);
 		$this->setDessenha($password);
 
-		
-		$sql->new Sql();
+		$sql = new Sql();
 		
 		$sql->query("UPDATE tb_usuarios SET deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID", array(
 			':LOGIN'=>$this->getDeslogin(),
